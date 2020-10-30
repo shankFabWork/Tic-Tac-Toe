@@ -1,0 +1,162 @@
+<!doctype html>
+<html>
+
+<head>
+  <style>
+    * {
+      margin: 0px;
+      padding: 0px;
+    }
+
+    .un1 {
+      background-color: black;
+      color: white;
+      font-size: 50px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .un2 {
+      background-color: red;
+      color: white;
+      font-size: 50px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .un3 {
+      background-color: orange;
+      color: white;
+      font-size: 50px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .in {
+      border: solid;
+      font-size: 40px;
+      padding: 20px 20px;
+    }
+
+    .isa {
+      background-color: red;
+      color: white;
+      font-size: 40px;
+      text-align: center;
+      display: block;
+      height: 100px;
+    }
+
+    .button {
+      background-color: #4CAF50; /* Green */
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      cursor: pointer;
+      height: 100px;
+    }
+
+    .button3 {width: 100%;}
+
+  </style>
+</head>
+
+<body>
+
+  <div class="un1">Tic Tac Toe </div>
+  <div class="un2">Player 1 & Player 2 </div>
+
+
+  <div class="un3">
+
+    <span class="in" onclick='get(this)' id="ram1">*</span>
+    <span class="in" onclick='get(this)' id="ram2">*</span>
+    <span class="in" onclick='get(this)' id="ram3">*</span>
+    <br><br>
+    <span class="in" onclick='get(this)' id="ram4">*</span>
+    <span class="in" onclick='get(this)' id="ram5">*</span>
+    <span class="in" onclick='get(this)' id="ram6">*</span>
+    <br><br>
+    <span class="in" onclick='get(this)' id="ram7">*</span>
+    <span class="in" onclick='get(this)' id="ram8">*</span>
+    <span class="in" onclick='get(this)' id="ram9">*</span>
+
+    
+  </div>
+
+      <p id="demo" class="isa">
+        Result Board
+      </p>
+      <button class="button button3" onClick="window.location.reload();">Play Again</button>
+
+
+
+      <script>
+
+        var p = 0;
+        var s = 0;
+        var g = 0;
+
+
+
+
+        function get(a) {
+
+          if (p % 2 == 0) { a.innerHTML = 0; }
+          else { a.innerHTML = 1; }
+
+
+          var x1 = document.getElementById("ram1").innerHTML;
+          var x2 = document.getElementById("ram2").innerHTML;
+          var x3 = document.getElementById("ram3").innerHTML;
+          var x4 = document.getElementById("ram4").innerHTML;
+          var x5 = document.getElementById("ram5").innerHTML;
+          var x6 = document.getElementById("ram6").innerHTML;
+          var x7 = document.getElementById("ram7").innerHTML;
+          var x8 = document.getElementById("ram8").innerHTML;
+          var x9 = document.getElementById("ram9").innerHTML;
+
+
+
+          if (
+            (x1 == '1' && x5 == '1' && x9 == '1') || (x3 == '1' && x5 == '1' && x7 == '1') ||
+            (x1 == '1' && x2 == '1' && x3 == '1') || (x4 == '1' && x5 == '1' && x6 == '1') || (x7 == '1' && x8 == '1' && x9 == '1') ||
+            (x1 == '1' && x4 == '1' && x7 == '1') || (x2 == '1' && x5 == '1' && x8 == '1') || (x3 == '1' && x6 == '1' && x9 == '1')
+          ) { document.getElementById("demo").innerHTML = "Player 2 win used (1) <br /> ==GAME OVER==  "; s = 1; }
+
+          else if (
+            (x1 == '0' && x5 == '0' && x9 == '0') || (x3 == '0' && x5 == '0' && x7 == '0') ||
+            (x1 == '0' && x2 == '0' && x3 == '0') || (x4 == '0' && x5 == '0' && x6 == '0') || (x7 == '0' && x8 == '0' && x9 == '0') ||
+            (x1 == '0' && x4 == '0' && x7 == '0') || (x2 == '0' && x5 == '0' && x8 == '0') || (x3 == '0' && x6 == '0' && x9 == '0')
+          ) { document.getElementById("demo").innerHTML = "Player 1 win used (0) <br /> ==GAME OVER==  "; s = 1; }
+
+          else if ((x1 == 0 || x1 == 1) && (x2 == 0 || x2 == 1) && (x3 == 0 || x3 == 1) && (x4 == 0 || x4 == 1) && (x5 == 0 || x5 == 1) && (x6 == 0 || x6 == 1) && (x7 == 0 || x7 == 1) && (x8 == 0 || x8 == 1) && (x9 == 0 || x9 == 1)) {
+            document.getElementById("demo").innerHTML = "none of the player win  <br /> ==GAME OVER==  "; s = 1;
+          }
+
+          if (s == 1) { clr(); }
+
+
+
+          p++;
+        }
+
+
+        function clr() {
+          var r = document.getElementsByTagName("span");
+
+          for (var i = 0; i < 9; i++) { r[i].innerHTML = "x"; }
+
+        }
+
+
+
+      </script>
+
+</body>
+
+</html>
